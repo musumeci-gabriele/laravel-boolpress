@@ -1,12 +1,9 @@
 <?php
-// *inseriamo il file nella sotto cartella Admin e modifichiamo il namespace
-namespace App\Http\Controllers\Admin;
+
+namespace App\Http\Controllers;
 
 use App\Article;
-use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -17,11 +14,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
+        $articles = Article::all();
 
-        $articles =Article::where('user_id', $id)->get();
-
-        return view('admin.articles.index', compact('articles'));
+        return view('guest.articles.index', compact('articles'));
     }
 
     /**
@@ -53,7 +48,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        $article = Article::find('id');
+
+        return view('guest.articles.show', compact('article'));
     }
 
     /**

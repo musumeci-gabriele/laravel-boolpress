@@ -1,6 +1,6 @@
 <?php
-// * Home visibile agli utenti
 
+// * Home visibile agli utenti
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -14,7 +14,9 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   
+        // *Controllo autenticazioni solo  se sono loggato
+        
         $this->middleware('auth');
     }
 
