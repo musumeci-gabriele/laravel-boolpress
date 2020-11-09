@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+// * rotte protette Admin
+Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function(){
+    Route::get('/', 'homeCointroller@index')->name('home');
+
+});
+
+// * rotte non protette Guest
