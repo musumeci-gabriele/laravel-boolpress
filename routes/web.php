@@ -23,13 +23,12 @@ Route::get('/', function () {
 Auth::routes();
 
 
-// * Rotte protette Admin
-Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function(){
+// * Rotte protette Admin e tutte dovranno avere il namespace Admin
+Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('posts', 'ArticleController');
-
 });
 
 // * Rotte non protette Guest
-Route::get('posts', 'ArticleController@index')->name('posts.index');
-Route::get('posts/{slug}', 'ArticleController@show')->name('posts.show');
+Route::get('posts', 'ArticleController@index')->name('guest.index');
+Route::get('posts/{slug}', 'ArticleController@show')->name('guest.show');

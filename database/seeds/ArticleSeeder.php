@@ -18,6 +18,7 @@ class ArticleSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
 
+            // * primo utente random 
             $user = User::inRandomOrder()->first();
 
             $newArticle = new Article;
