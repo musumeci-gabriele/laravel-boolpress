@@ -5,7 +5,7 @@
     <div class="container">
         <h1>Crea il tuo post</h1>
 
-        <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
             @method("POST")

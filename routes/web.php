@@ -26,9 +26,9 @@ Auth::routes();
 // * Rotte protette Admin e tutte dovranno avere il namespace Admin
 Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('posts', 'ArticleController');
+    Route::resource('articles', 'ArticleController');
 });
 
 // * Rotte non protette Guest
-Route::get('posts', 'ArticleController@index')->name('guest.index');
-Route::get('posts/{slug}', 'ArticleController@show')->name('guest.show');
+Route::get('articles', 'ArticleController@index')->name('article.index');
+Route::get('articles/{slug}', 'ArticleController@show')->name('article.show');

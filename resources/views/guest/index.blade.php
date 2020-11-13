@@ -19,9 +19,9 @@
                         <th>{{ $article->title }}</th>
                         <td>{{ $article->slug }}</td>
                         <td>{{ $article->content }}</td>
-                        <td><a href="{{ route('guest.show', $article->slug) }}">View</a>
-                            Edit
-                            Delete</td>
+                        <td><a href="{{ route('article.show', $article->slug) }}">View</a></td>
+                        <td><a href="{{ route('guest.show', $article->slug) }}">Edit</a></td>
+                        <td><a href="{{ route('guest.show', $article->slug) }}">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>

@@ -18,9 +18,9 @@
                             <td>{{ $article->title }}</td>
                             <td>{{ $article->user_id }}</td>
                             <td>{{ $article->abstract }}</td>
-                            <td><a href="{{ route('admin.article.show', $article) }}">Details</a></td>
-                            <td><a href="{{ route('admin.article.edit', $article) }}">Edit</a></td>
-                            <td><a href="{{ route('admin.article.destroy', $article) }}">Delete</a></td>
+                            <td><a href="{{ route('admin.posts.show', $article) }}">Details</a></td>
+                            <td><a href="{{ route('admin.posts.edit', $article) }}">Edit</a></td>
+                            <td><a href="{{ route('admin.posts.destroy', $article) }}">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>

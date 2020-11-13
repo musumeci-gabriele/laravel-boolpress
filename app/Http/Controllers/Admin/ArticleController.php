@@ -25,7 +25,7 @@ class ArticleController extends Controller
 
         $articles = Article::where('user_id', $user_id)->get();
 
-        return view('admin.post.index', compact('articles'));
+        return view('admin.posts.index', compact('articles'));
     }
 
     /**
@@ -34,8 +34,9 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.post.create');
+    {   
+        // * l'utente verra' reindirizzato al form di creazione
+        return view('admin.posts.create');
     }
 
     /**
@@ -48,6 +49,7 @@ class ArticleController extends Controller
     {
         $data = $request->all();
 
+        // * validazione dei campi di inserimento "obligatori" del form
         $request->validate([
             "title" => "required",
             "slug" => "required|unique:articles",
@@ -71,8 +73,9 @@ class ArticleController extends Controller
 
         // * Inviamo i dati via email
         Mail::to($newArticle->user->email)->send(new SendNewMail($newArticle));
-
-        return redirect()->route("admin.post.show", $newArticle->slug);
+        
+        // * l'utente verra' reindirizzato alla pagina show di ricapitolazione
+        return redirect()->route("admin.posts.show", $newArticle->slug);
     }
 
     /**
@@ -84,7 +87,7 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->first();
-        return view('admin.post.show', compact('article'));
+        return view('admin.posts.show', compact('article'));
     }
 
     /**

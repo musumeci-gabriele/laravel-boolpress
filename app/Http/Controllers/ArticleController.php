@@ -18,7 +18,7 @@ class ArticleController extends Controller
 
         $articles = Article::all();
 
-        return view('guest.posts.index', compact('articles'));
+        return view('guest.index', compact('articles'));
     }
 
     /**
@@ -31,6 +31,6 @@ class ArticleController extends Controller
     {
         $article = Article::where("slug", $slug)->first();
 
-        return view('guest.posts.show', compact('article'));
+        return view('guest.show', compact('article'));
     }
 }
