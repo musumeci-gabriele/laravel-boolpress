@@ -25,7 +25,7 @@ Auth::routes();
 
 // * Rotte protette Admin e tutte dovranno avere il namespace Admin
 Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
+    // Route::get('/', 'HomeController@index')->name('home');
     Route::resource('articles', 'ArticleController');
 });
 
